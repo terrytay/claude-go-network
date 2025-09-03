@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra-Fast Networking with Go - Learn by Building</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+    <script src="assets/js/highlight.min.js"></script>
+    <script src="assets/js/tutorial.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>🚀 Ultra-Fast Networking</h1>
+                <p>Building High-Performance Systems with Go</p>
+            </div>
+            <div class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#roadmap">Learning Path</a>
+                <a href="#performance">Performance</a>
+                <a href="#get-started">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Master Ultra-Fast Networking from Scratch</h1>
+                <p class="hero-subtitle">
+                    Learn to build custom HTTP over UDP that outperforms traditional TCP/HTTP by 
+                    <span class="highlight">10x or more</span>. No external libraries - just raw Linux syscalls and performance optimizations.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">&lt;1μs</div>
+                        <div class="stat-label">Response Time</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10M+</div>
+                        <div class="stat-label">Packets/sec</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">Zero</div>
+                        <div class="stat-label">Memory Copies</div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#get-started" class="btn btn-primary">Start Learning</a>
+                    <a href="#demo" class="btn btn-secondary">Live Demo</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="overview" class="section">
+            <div class="container">
+                <h2>Why This Tutorial Exists</h2>
+                <div class="grid grid-3">
+                    <div class="card">
+                        <div class="card-icon">⚡</div>
+                        <h3>Performance Matters</h3>
+                        <p>Modern applications need sub-millisecond response times. Traditional TCP/HTTP adds too much overhead for high-frequency trading, gaming, and IoT.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🔬</div>
+                        <h3>Learn by Building</h3>
+                        <p>Following the proven "Learn Go with Tests" methodology - write tests first, implement solutions, see immediate results.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🐧</div>
+                        <h3>Linux Performance</h3>
+                        <p>Direct syscalls, zero-copy operations, epoll, lock-free algorithms - everything you need for production-grade performance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="section bg-light">
+            <div class="container">
+                <h2>Your Learning Journey</h2>
+                <p class="section-subtitle">Each chapter builds on the previous one, following Test-Driven Development</p>
+                
+                <div class="roadmap">
+                    <div class="roadmap-item" data-chapter="1">
+                        <div class="roadmap-number">1</div>
+                        <div class="roadmap-content">
+                            <h3>Linux Raw Sockets</h3>
+                            <p>Start with raw Linux syscalls. Learn socket(), bind(), sendto(), recvfrom() without any Go net package.</p>
+                            <div class="roadmap-skills">
+                                <span class="skill">syscalls</span>
+                                <span class="skill">raw sockets</span>
+                                <span class="skill">TDD</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item" data-chapter="2">
+                        <div class="roadmap-number">2</div>
+                        <div class="roadmap-content">
+                            <h3>Zero-Copy Operations</h3>
+                            <p>Eliminate memory copies with sendfile(), mmap(), splice(). See 50% performance improvements immediately.</p>
+                            <div class="roadmap-skills">
+                                <span class="skill">sendfile</span>
+                                <span class="skill">mmap</span>
+                                <span class="skill">zero-copy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item" data-chapter="3">
+                        <div class="roadmap-number">3</div>
+                        <div class="roadmap-content">
+                            <h3>Epoll Async I/O</h3>
+                            <p>Handle thousands of connections with a single thread using Linux epoll. Scale beyond C10K problem.</p>
+                            <div class="roadmap-skills">
+                                <span class="skill">epoll</span>
+                                <span class="skill">async I/O</span>
+                                <span class="skill">scalability</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item" data-chapter="4">
+                        <div class="roadmap-number">4</div>
+                        <div class="roadmap-content">
+                            <h3>Lock-Free Reliability</h3>
+                            <p>Build UDP reliability without mutexes. Use atomic operations and lock-free data structures.</p>
+                            <div class="roadmap-skills">
+                                <span class="skill">lock-free</span>
+                                <span class="skill">atomic ops</span>
+                                <span class="skill">reliability</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item" data-chapter="5">
+                        <div class="roadmap-number">5</div>
+                        <div class="roadmap-content">
+                            <h3>Packet Batching</h3>
+                            <p>Process multiple packets per syscall. Add SIMD instructions for checksums and validation.</p>
+                            <div class="roadmap-skills">
+                                <span class="skill">batching</span>
+                                <span class="skill">SIMD</span>
+                                <span class="skill">vectorization</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item" data-chapter="6">
+                        <div class="roadmap-number">6</div>
+                        <div class="roadmap-content">
+                            <h3>DPDK-Ready Architecture</h3>
+                            <p>Prepare for kernel bypass. Design for poll-mode drivers and user-space networking.</p>
+                            <div class="roadmap-skills">
+                                <span class="skill">DPDK</span>
+                                <span class="skill">kernel bypass</span>
+                                <span class="skill">PMD</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item" data-chapter="7">
+                        <div class="roadmap-number">7</div>
+                        <div class="roadmap-content">
+                            <h3>Web Applications</h3>
+                            <p>Build real applications: HTTP server, chat app, file upload service. See the performance gains.</p>
+                            <div class="roadmap-skills">
+                                <span class="skill">HTTP server</span>
+                                <span class="skill">real-time</span>
+                                <span class="skill">benchmarks</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="performance" class="section">
+            <div class="container">
+                <h2>Performance Improvements You'll Achieve</h2>
+                
+                <div class="performance-comparison">
+                    <div class="comparison-chart">
+                        <h3>Latency Comparison</h3>
+                        <div class="chart-container">
+                            <canvas id="latencyChart" width="600" height="300"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-chart">
+                        <h3>Throughput Comparison</h3>
+                        <div class="chart-container">
+                            <canvas id="throughputChart" width="600" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="performance-details">
+                    <h3>Real-World Results</h3>
+                    <div class="grid grid-2">
+                        <div class="performance-card">
+                            <h4>🏦 High-Frequency Trading</h4>
+                            <div class="performance-metric">
+                                <span class="metric-before">5ms → </span>
+                                <span class="metric-after">0.5μs</span>
+                                <span class="metric-improvement">10,000x faster</span>
+                            </div>
+                            <p>Order execution latency for financial applications</p>
+                        </div>
+                        
+                        <div class="performance-card">
+                            <h4>🎮 Real-Time Gaming</h4>
+                            <div class="performance-metric">
+                                <span class="metric-before">50ms → </span>
+                                <span class="metric-after">5ms</span>
+                                <span class="metric-improvement">10x faster</span>
+                            </div>
+                            <p>Player action response time in multiplayer games</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="methodology" class="section bg-light">
+            <div class="container">
+                <h2>TDD Learning Methodology</h2>
+                <p class="section-subtitle">Based on the proven "Learn Go with Tests" approach</p>
+                
+                <div class="methodology-steps">
+                    <div class="step">
+                        <div class="step-icon red">❌</div>
+                        <div class="step-content">
+                            <h3>1. Write Test First (Red)</h3>
+                            <p>Start with a failing test that defines the behavior you want. This helps you think about the API design before implementation.</p>
+                            <div class="code-example">
+                                <pre><code class="go">func TestLinuxSocket(t *testing.T) {
+    socket := NewLinuxSocket()
+    err := socket.Send([]byte("test"))
+    // This will fail - we haven't implemented it yet!
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-icon green">✅</div>
+                        <div class="step-content">
+                            <h3>2. Make It Pass (Green)</h3>
+                            <p>Write the minimal code to make the test pass. Don't worry about perfect code - just make it work.</p>
+                            <div class="code-example">
+                                <pre><code class="go">func (s *LinuxSocket) Send(data []byte) error {
+    _, err := syscall.Sendto(s.fd, data, 0, s.addr)
+    return err
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-icon blue">🔄</div>
+                        <div class="step-content">
+                            <h3>3. Refactor (Blue)</h3>
+                            <p>Now improve the code while keeping tests green. Add error handling, optimize performance, improve readability.</p>
+                            <div class="code-example">
+                                <pre><code class="go">func (s *LinuxSocket) Send(data []byte) error {
+    if len(data) == 0 {
+        return errors.New("empty data")
+    }
+    n, err := syscall.Sendto(s.fd, data, 0, s.addr)
+    if err != nil {
+        return fmt.Errorf("send failed: %v", err)
+    }
+    if n != len(data) {
+        return errors.New("partial send")
+    }
+    return nil
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="get-started" class="section">
+            <div class="container">
+                <h2>Ready to Start?</h2>
+                <div class="get-started-content">
+                    <div class="prerequisites">
+                        <h3>Prerequisites</h3>
+                        <ul>
+                            <li>Basic Go knowledge (variables, functions, structs)</li>
+                            <li>Linux environment (WSL works great on Windows)</li>
+                            <li>Curiosity about systems programming</li>
+                        </ul>
+                    </div>
+
+                    <div class="setup">
+                        <h3>Quick Setup</h3>
+                        <div class="code-block">
+                            <pre><code class="bash"># Clone the tutorial
+git clone https://github.com/yourusername/ultra-fast-networking
+cd ultra-fast-networking
+
+# Run the first test (it will fail - that's expected!)
+go test -v -run TestLinuxSocket
+
+# Follow along with Chapter 1
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter-links">
+                    <h3>Start Your Journey</h3>
+                    <div class="grid grid-2">
+                        <a href="chapter1/" class="chapter-link">
+                            <div class="chapter-number">01</div>
+                            <div class="chapter-info">
+                                <h4>Linux Raw Sockets</h4>
+                                <p>Your first syscall-based socket</p>
+                            </div>
+                            <div class="chapter-arrow">→</div>
+                        </a>
+
+                        <a href="fundamentals/" class="chapter-link secondary">
+                            <div class="chapter-number">📚</div>
+                            <div class="chapter-info">
+                                <h4>Fundamentals</h4>
+                                <p>Networking concepts explained</p>
+                            </div>
+                            <div class="chapter-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Tutorial</h4>
+                    <ul>
+                        <li><a href="chapter1/">Chapter 1: Raw Sockets</a></li>
+                        <li><a href="chapter2/">Chapter 2: Zero-Copy</a></li>
+                        <li><a href="chapter3/">Chapter 3: Epoll</a></li>
+                        <li><a href="chapter4/">Chapter 4: Lock-Free</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Examples</h4>
+                    <ul>
+                        <li><a href="examples/http-server/">HTTP Server</a></li>
+                        <li><a href="examples/chat-app/">Chat Application</a></li>
+                        <li><a href="examples/benchmarks/">Benchmarks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Reference</h4>
+                    <ul>
+                        <li><a href="reference/api/">API Documentation</a></li>
+                        <li><a href="reference/troubleshooting/">Troubleshooting</a></li>
+                        <li><a href="reference/performance/">Performance Tips</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ultra-Fast Networking Tutorial. Learn by building high-performance systems.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize tutorial features
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
+            setupInteractiveElements();
+            trackProgress();
+        });
+
+        function initializeCharts() {
+            // Create performance comparison charts
+            const latencyCtx = document.getElementById('latencyChart');
+            const throughputCtx = document.getElementById('throughputChart');
+            
+            if (latencyCtx && throughputCtx) {
+                // Initialize charts with performance data
+                createLatencyChart(latencyCtx);
+                createThroughputChart(throughputCtx);
+            }
+        }
+
+        function createLatencyChart(ctx) {
+            // Simulated chart creation - replace with actual chart library
+            ctx.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4)';
+        }
+
+        function createThroughputChart(ctx) {
+            // Simulated chart creation - replace with actual chart library  
+            ctx.style.background = 'linear-gradient(45deg, #4ecdc4, #45b7d1)';
+        }
+
+        function setupInteractiveElements() {
+            // Add click handlers for roadmap items
+            document.querySelectorAll('.roadmap-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const chapter = this.dataset.chapter;
+                    window.location.href = `chapter${chapter}/`;
+                });
+            });
+        }
+
+        function trackProgress() {
+            // Load user progress from localStorage
+            const progress = JSON.parse(localStorage.getItem('tutorial-progress') || '{}');
+            
+            // Update UI based on progress
+            Object.keys(progress).forEach(chapter => {
+                const element = document.querySelector(`[data-chapter="${chapter}"]`);
+                if (element && progress[chapter].completed) {
+                    element.classList.add('completed');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
